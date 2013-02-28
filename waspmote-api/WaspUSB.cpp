@@ -48,7 +48,7 @@ WaspUSB::WaspUSB()
 void WaspUSB::ON()
 {
 	// open UART0
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	
 	// switch multiplexor on
 	pinMode(MUX_PW,OUTPUT);
@@ -79,7 +79,7 @@ void WaspUSB::OFF()
  */
 uint8_t WaspUSB::available()
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 
 	// configure multiplexor to USB port
 	digitalWrite(MUX_PW,HIGH);
@@ -94,7 +94,7 @@ uint8_t WaspUSB::available()
  */
 int WaspUSB::read()
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	return serialRead( _uart);
 }
 
@@ -104,7 +104,7 @@ int WaspUSB::read()
  */
 void WaspUSB::flush()
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	serialFlush( _uart);
 }
 
@@ -114,7 +114,7 @@ void WaspUSB::flush()
  */
 void WaspUSB::print(char c)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printByte(c,  _uart);
@@ -128,7 +128,7 @@ void WaspUSB::print(char c)
  */
 void WaspUSB::print(const char c[])
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printString(c,  _uart);
@@ -142,7 +142,7 @@ void WaspUSB::print(const char c[])
  */
 void WaspUSB::print(uint8_t b)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printByte(b,  _uart);
@@ -156,7 +156,7 @@ void WaspUSB::print(uint8_t b)
  */
 void WaspUSB::print(int n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print((long) n);
@@ -170,7 +170,7 @@ void WaspUSB::print(int n)
  */
 void WaspUSB::print(unsigned int n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print((unsigned long) n);
@@ -184,7 +184,7 @@ void WaspUSB::print(unsigned int n)
  */
 void WaspUSB::print(long n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	if (n < 0) 
@@ -203,7 +203,7 @@ void WaspUSB::print(long n)
  */
 void WaspUSB::print(unsigned long n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printNumber(n, 10);
@@ -217,7 +217,7 @@ void WaspUSB::print(unsigned long n)
  */
 void WaspUSB::print(long n, int base)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	if (base == 0)
@@ -236,7 +236,7 @@ void WaspUSB::print(long n, int base)
  */
 void WaspUSB::printHex(char n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 
@@ -253,7 +253,7 @@ void WaspUSB::printHex(char n)
  */
 void WaspUSB::print(double n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printFloat(n, 10);
@@ -267,7 +267,7 @@ void WaspUSB::print(double n)
  */
 void WaspUSB::print(uint64_t n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printInteger(n,0);
@@ -281,7 +281,7 @@ void WaspUSB::print(uint64_t n)
  */
 void WaspUSB::println()
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print('\r');
@@ -296,7 +296,7 @@ void WaspUSB::println()
  */
 void WaspUSB::println(char c)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(c);
@@ -311,7 +311,7 @@ void WaspUSB::println(char c)
  */
 void WaspUSB::println(const char c[])
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(c);
@@ -326,7 +326,7 @@ void WaspUSB::println(const char c[])
  */
 void WaspUSB::println(uint8_t b)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(b);
@@ -341,7 +341,7 @@ void WaspUSB::println(uint8_t b)
  */
 void WaspUSB::println(int n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(n);
@@ -356,7 +356,7 @@ void WaspUSB::println(int n)
  */
 void WaspUSB::println(long n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(n);
@@ -371,7 +371,7 @@ void WaspUSB::println(long n)
  */
 void WaspUSB::println(unsigned long n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(n);
@@ -387,7 +387,7 @@ void WaspUSB::println(unsigned long n)
  */
 void WaspUSB::println(long n, int base)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(n, base);
@@ -402,7 +402,7 @@ void WaspUSB::println(long n, int base)
  */
 void WaspUSB::println(double n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	print(n);
@@ -417,7 +417,7 @@ void WaspUSB::println(double n)
  */
 void WaspUSB::println(uint64_t n)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printInteger(n,0);
@@ -434,7 +434,7 @@ void WaspUSB::println(uint64_t n)
  */
 void WaspUSB::printNumber(unsigned long n, uint8_t base)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	printIntegerInBase(n, base,  _uart);
@@ -451,7 +451,7 @@ void WaspUSB::printNumber(unsigned long n, uint8_t base)
  */
 void WaspUSB::printFloat(double number, uint8_t digits) 
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	digitalWrite(MUX_PW,HIGH);
 	digitalWrite(MUX_USB_XBEE,LOW);
 	// Handle negative numbers
@@ -497,7 +497,7 @@ void WaspUSB::printFloat(double number, uint8_t digits)
  */
 uint32_t WaspUSB::print(const __FlashStringHelper *ifsh)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	const prog_char *p = (const prog_char *)ifsh;
 	uint32_t n = 0;
 	while (1) 
@@ -517,7 +517,7 @@ uint32_t WaspUSB::print(const __FlashStringHelper *ifsh)
  */
 uint32_t WaspUSB::println(const __FlashStringHelper *ifsh)
 {
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	uint32_t n = print(ifsh);	
 	println();
 	return n;
@@ -549,7 +549,7 @@ uint32_t WaspUSB::println(const __FlashStringHelper *ifsh)
  */
 void  WaspUSB::printf(char *fmt, ... )
 {	
-	beginSerial(115200, _uart);
+	beginSerial(USB_RATE, _uart);
 	// resulting string limited to 128 chars
     char tmp[128]; 
     va_list args;
